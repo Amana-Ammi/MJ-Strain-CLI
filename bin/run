@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby 
+
+require 'bundler/setup'
+require 'dotenv/load'
+Bundler.require
+
+require_relative '../config/environment.rb'
+
+StrainApi.new.get_strain
+CLI.new.start
+binding.pry
