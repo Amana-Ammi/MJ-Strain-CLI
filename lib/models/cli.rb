@@ -8,12 +8,16 @@ class CLI
     def start
         age_verification
         welcome
-        how_to_exit
+        how_to_exit # should probably combine with my continue method
+        continue
+        hurry_up #not working
+        goodbye
+        
         #in a rush? here's a random strain?
         # Some kind of menu w/options for search by flavor, effects, or strain
         # Commands for user to continue in program and also exit when done
         # A thank you/goodbye message. Please endulge responsibly
-        goodbye
+       
     end
 
     def user_input
@@ -39,6 +43,12 @@ class CLI
         end
     end
 
+    def continue
+        puts "                              If you'd like to continue, type 'C'."
+        if user_input == "C"
+        end
+    end
+
     def exit_program
         exit 
     end
@@ -50,6 +60,7 @@ class CLI
     end
 
     def age_verification
+        # why do I need to press enter twice?
         puts ""
         puts "Before we get started, please enter your age below."
             if user_input.to_i >= 21
@@ -71,7 +82,11 @@ class CLI
     end
 
     def hurry_up
-        Strain.all
+        puts "In a rush? Press 'y' to get a random strain."
+        if user_input == 'Y'
+           puts rush_strain
+        end
+    #     binding.pry 
     end
     
 
