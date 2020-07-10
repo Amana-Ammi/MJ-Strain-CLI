@@ -14,6 +14,10 @@ class Strain
     def self.all
         @@all
     end
+    
+    def rush_strain
+        self.all.sample
+    end
 
     def self.random_strains
         self.all.sample(3)
