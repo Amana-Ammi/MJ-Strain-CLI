@@ -7,5 +7,4 @@ Bundler.require
 require_relative '../config/environment.rb'
 
 StrainApi.new.get_strain
-# binding.pry
 CLI.new.start

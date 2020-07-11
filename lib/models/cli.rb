@@ -39,11 +39,12 @@ class CLI
     end
 
     def get_random_strain
-        # random_strain = 
-        Strain.all[rand(0..1970)].each do |hash|  
-            hash[0],hash[1]["flavors"],hash[1]["effects"]["positive"]
+        @api.get_strain
+
+        Strain.all.each do |hash|  
+            Strain.new(hash[0],hash[1]["flavors"],hash[1]["effects"]["positive"])
         end  
-    binding.pry
+  
     end
 
     def hurry_up
@@ -58,7 +59,6 @@ class CLI
             EFFECTS: #{Strain.all[rand(0..1970)].effects}" #these results don't match 
            puts ""
         end
-    
     end
 
 
@@ -87,8 +87,6 @@ class CLI
         end
     end
 
-
-
     def welcome
         puts "
          W                                                                            W   
@@ -106,6 +104,5 @@ class CLI
          |                                                                            | "
 
     end
-
 
 end
