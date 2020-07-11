@@ -15,9 +15,20 @@ class Strain
         @@all
     end
     
-    def rush_strain
-        self.all.sample
+    def self.rush_strain
+        all.sample
     end
+   
+
+    # def by_flavor
+    # end
+
+    # def by_race
+    # end
+
+    # def by_effect
+    # end
+
 
     def self.random_strains
         self.all.sample(3)

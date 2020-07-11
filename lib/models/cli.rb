@@ -1,22 +1,26 @@
-# require 'pry'
-# require_relative "../models/strain.rb"
-# require_relative "../services/api.rb"
 
 class CLI 
-    attr_accessor :age, :user_input
+    attr_accessor :user_input, :api
+
+    def initialize
+        @api = StrainApi.new
+    end
 
     def start
+        @api.get_strain
+        # binding.pry
         age_verification
         welcome
-        how_to_exit # should probably combine with my continue method
-        continue
+        #  if how_to_exit == true
+        #     goodbye 
+        #  end# should probably combine with my continue method
         hurry_up #not working
-        goodbye
+      
         
         #in a rush? here's a random strain?
         # Some kind of menu w/options for search by flavor, effects, or strain
         # Commands for user to continue in program and also exit when done
-        # A thank you/goodbye message. Please endulge responsibly
+        # A thank you/goodbye message. Please be responsible
        
     end
 
@@ -60,17 +64,17 @@ class CLI
     end
 
     def age_verification
-        # why do I need to press enter twice?
+        # why do I need to press enter twice? b/c i had an elsif statement. fixed
         puts ""
         puts "Before we get started, please enter your age below."
             if user_input.to_i >= 21
-                puts "         ~~~ Congratulations! You were born just in time to use this application!! ~~~"
+                puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
                 puts ""
-            elsif user_input.to_i < 21
+            else
                 puts "Looks like you're too young to participate. Please come back when you're of legal age! :)"
                 puts ""
                 exit_program
-            # elsif user_input == user_input
+            # else
             #     puts ""
             #     puts "Invalid input. Please try again using only numbers."
             #     puts ""
@@ -78,17 +82,20 @@ class CLI
             end 
     end
 
-    def main_menu
-    end
 
     def hurry_up
-        puts "In a rush? Press 'y' to get a random strain."
-        if user_input == 'Y'
-           puts rush_strain
+        puts "In a rush? Press 'Y' to get a random strain. Or 'N' to continue."
+        if user_input.upcase == 'Y'
+            @api.get_strain
+            puts Strain.all[rand(100)].name
+        else
+            puts "damn"
         end
-    #     binding.pry 
+    # binding.pry 
     end
-    
+
+    def main_menu
+    end
 
     def welcome
         puts "
@@ -113,15 +120,3 @@ end
 
 x = CLI.new
 x.start
-
-
-
-# def age_verification
-#     puts "Before we get stared, please enter your age below."
-#     user_input = gets.chomp
-
-#     if user_input.to_i >= 21
-#         "Congratulations! You were born just in time to use this application!!"
-#     else 
-#         puts "Looks like you're too young to participate. Please come back when you're of legal age! :)"
-#         exit_program
