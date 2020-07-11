@@ -14,29 +14,9 @@ class Strain
     def self.all
         @@all
     end
-    
-    def self.rush_strain
-        all.sample
-    end
-   
-
-    # def by_flavor
-    # end
-
-    # def by_race
-    # end
-
-    # def by_effect
-    # end
-
-
-    def self.random_strains
-        self.all.sample(3)
-    end
 
     def self.print_test
         all.each {|strain| puts strain} 
-        #prints the original array as well..that doesn't look too pretty
     end
 
 end

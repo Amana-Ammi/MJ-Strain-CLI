@@ -1,6 +1,7 @@
 
 class CLI 
-    attr_accessor :user_input, :api
+    attr_accessor :user_input
+    attr_reader :api
 
     def initialize
         @api = StrainApi.new
@@ -29,14 +30,11 @@ class CLI
                 puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
                 puts ""
             else
-                puts "Looks like you're too young to participate. Please come back when you're of legal age! :)"
+                puts "
+                Either your input is inavlid or you're too young to participate. 
+                   Please try again or come back when you're of legal age! :)"
                 puts ""
                 exit_program
-            # else
-            #     puts ""
-            #     puts "Invalid input. Please try again using only numbers."
-            #     puts ""
-            #     age_verification
             end 
     end
 
@@ -49,6 +47,7 @@ class CLI
            NAME: #{Strain.all[rand(0..1970)].name}
            
            EFFECTS: #{Strain.all[rand(0..1970)].effects}" #these results don't match 
+           puts ""
         else
             puts "damn"
         end
