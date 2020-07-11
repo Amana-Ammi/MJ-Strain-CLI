@@ -40,17 +40,24 @@ class CLI
     end
 
     def get_random_strain
-        @api.get_strain.sample
-  
+        @api.get_strain
+        i = rand(0..10)
+        puts "NAME: #{Strain.all[i].name}"
+        puts ""
+        puts "FLAVORS: #{Strain.all[i].flavors}"
+        puts ""
+        puts "EFFECTS: #{Strain.all[i].effects}"
     end
 
     def hurry_up
+        puts ""
         puts "In a rush? Press 'Y' to get a random strain. Or 'N' to continue."
         if user_input == 'Y'
            @api.get_strain
            puts ""
            puts get_random_strain
            puts ""
+           goodbye
         end
     end
 
@@ -61,7 +68,7 @@ class CLI
         puts ""
         puts "                                ~~ Please enjoy responsibly! ~~"
         puts ""
-        exit_program
+        exit
     end
 
     def how_to_exit
