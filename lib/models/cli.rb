@@ -38,19 +38,27 @@ class CLI
             end 
     end
 
+    def get_random_strain
+        # random_strain = 
+        Strain.all[rand(0..1970)].each do |hash|  
+            hash[0],hash[1]["flavors"],hash[1]["effects"]["positive"]
+        end  
+    binding.pry
+    end
+
     def hurry_up
         puts "In a rush? Press 'Y' to get a random strain. Or 'N' to continue."
         if user_input == 'Y'
            @api.get_strain
            puts ""
            puts "
-           NAME: #{Strain.all[rand(0..1970)].name}
+            
+            NAME: #{Strain.all[rand(0..1970)].name}
            
-           EFFECTS: #{Strain.all[rand(0..1970)].effects}" #these results don't match 
+            EFFECTS: #{Strain.all[rand(0..1970)].effects}" #these results don't match 
            puts ""
-        else
-            puts "damn"
         end
+    
     end
 
 
@@ -79,15 +87,7 @@ class CLI
         end
     end
 
-    def exit_program
-        exit 
-    end
 
-    def user_exit
-        if user_input == "exit"
-            exit
-        end
-    end
 
     def welcome
         puts "
@@ -109,4 +109,3 @@ class CLI
 
 
 end
-
