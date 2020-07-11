@@ -1,4 +1,4 @@
-class StrainApi
+ class StrainApi
 
     URL = "https://strainapi.evanbusse.com/#{ENV["STRAIN_API_KEY"]}/strains/search/all"
 
