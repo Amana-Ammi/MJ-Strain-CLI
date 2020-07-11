@@ -11,7 +11,8 @@ class CLI
         @api.get_strain
         age_verification
         welcome
-        hurry_up #not working
+        hurry_up 
+        #not working
         #in a rush? here's a random strain?
         # Some kind of menu w/options for search by flavor, effects, or strain
         # Commands for user to continue in program and also exit when done
@@ -39,11 +40,7 @@ class CLI
     end
 
     def get_random_strain
-        @api.get_strain
-
-        Strain.all.each do |hash|  
-            Strain.new(hash[0],hash[1]["flavors"],hash[1]["effects"]["positive"])
-        end  
+        @api.get_strain.sample
   
     end
 
@@ -52,11 +49,7 @@ class CLI
         if user_input == 'Y'
            @api.get_strain
            puts ""
-           puts "
-            
-            NAME: #{Strain.all[rand(0..1970)].name}
-           
-            EFFECTS: #{Strain.all[rand(0..1970)].effects}" #these results don't match 
+           puts get_random_strain
            puts ""
         end
     end
@@ -106,3 +99,6 @@ class CLI
     end
 
 end
+
+
+
