@@ -12,7 +12,6 @@ class CLI
         age_verification
         welcome
         hurry_up 
-        # menu
         options
         
         # Commands for user to continue in program and also exit when done
@@ -27,15 +26,14 @@ class CLI
         puts ""
         puts "Before we get started, please enter your age below."
         user_input
-        if input.to_i >= 21
-            puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
-            space
-        elsif input.to_i < 21
-            puts "
-            Either your input is inavlid or you're too young to participate. 
+        if input.to_i > 121 || input.to_i < 21
+            puts "Either your input is inavlid or you're too young to participate. 
                 Please try again or come back when you're of legal age! :)"
             space
             exit
+        else 
+            puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
+            space
         end
     end
 
@@ -89,47 +87,40 @@ class CLI
         race_results
     end
 
-    def race_results
-        user_input
-        if input.to_i == 1
-            indica
-        elsif input.to_i == 2
-            sativa
-        elsif input.to_i == 3
-            hybrid
-        end
-    end
-
     def indica
         @api.get_strain
         i = rand(0..1970)
-        if Strain.all[i].race == "indica"
+        if Strain.all[i].race = "indica"
             puts "                          NAME: #{Strain.all[i].name}"
             space
             puts "                          FLAVORS: #{Strain.all[i].flavors}"
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          RACE: #{Strain.all[i].race}"       
             space
-        end        
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            space  
+        end    
     end
 
     def sativa
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].race == "sativa"
-                puts "                          NAME: #{Strain.all[i].name}"
-                space
-                puts "                          FLAVORS: #{Strain.all[i].flavors}"
-                space
-                puts "                          EFFECTS: #{Strain.all[i].effects}" 
-                space
-            end
+        if Strain.all[i].race = "sativa"
+            puts "                          NAME: #{Strain.all[i].name}"
+            space
+            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            space
+            puts "                          RACE: #{Strain.all[i].race}" 
+            space
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            space
+        end
     end
 
     def hybrid
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].race == "hybrid"
+            if Strain.all[i].race = "hybrid"
                 puts "                          NAME: #{Strain.all[i].name}"
                 space
                 puts "                          FLAVORS: #{Strain.all[i].flavors}"
@@ -161,7 +152,7 @@ class CLI
     def sweet
         @api.get_strain
         i = rand(0..1970)
-        if Strain.all[i].flavors == "sweet"
+        if Strain.all[i].flavors = "sweet"
             puts "                          NAME: #{Strain.all[i].name}"
             space
             puts "                          RACE: #{Strain.all[i].race}"
@@ -174,7 +165,7 @@ class CLI
     def earthy
         @api.get_strain
         i = rand(0..1970)
-        if Strain.all[i].flavors == "Earthy"
+        if Strain.all[i].flavors = "Earthy"
             puts "                          NAME: #{Strain.all[i].name}"
             space
             puts "                          RACE: #{Strain.all[i].race}"
@@ -212,7 +203,7 @@ class CLI
     def happy
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].effects == "happy"
+            if Strain.all[i].effects = "happy"
                 puts "                          NAME: #{Strain.all[i].name}"
                 space
                 puts "                          FLAVORS: #{Strain.all[i].flavors}"
@@ -225,7 +216,7 @@ class CLI
     def creative 
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].effects == "creative"
+            if Strain.all[i].effects = "creative"
                 puts "                          NAME: #{Strain.all[i].name}"
                 space
                 puts "                          FLAVORS: #{Strain.all[i].flavors}"
@@ -265,6 +256,17 @@ class CLI
             puts "INALID INPUT."
             puts "Please try again"
             hurry_up
+        end
+    end
+
+    def race_results
+        user_input
+        if input.to_i == 1
+            indica
+        elsif input.to_i == 2
+            sativa
+        elsif input.to_i == 3
+            hybrid
         end
     end
 
