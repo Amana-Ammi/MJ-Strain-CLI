@@ -12,7 +12,7 @@ class CLI
         age_verification
         welcome
         hurry_up 
-        menu
+        # menu
         options
         
         # Commands for user to continue in program and also exit when done
@@ -72,11 +72,13 @@ class CLI
         elsif input.to_i == 2
             flavor_menu
         elsif input.to_i == 3
-            pos_effect_menu
+            effect_menu
         end
     end
 
     def race_menu
+        space
+        puts "   Please choose a Strain Type below by typing in the corresponding number."
         puts "-------------------------------------------------------------------------------"
         puts "| 1. INDICA -- Been going and going? I can help you slow down and relax.      |"
         puts "|                                                                             |"
@@ -137,10 +139,12 @@ class CLI
     end
 
     def flavor_menu
+        space
+        puts "      Please choose a Flavor below by typing in the corresponding number."
         puts "-------------------------------------------------------------------------------"
-        puts "| 1. SWEET --      |"
+        puts "|                                 1. SWEET                                    |"
         puts "|                                                                             |"
-        puts "| 2. EARTHY --  |"
+        puts "|                                 2. EARTHY                                   |"
         puts "-------------------------------------------------------------------------------"
         flavor_results
     end
@@ -157,51 +161,110 @@ class CLI
     def sweet
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].flavors == "Sweet"
-                puts "                          NAME: #{Strain.all[i].name}"
-                space
-                puts "                          RACE: #{Strain.all[i].race}"
-                space
-                puts "                          EFFECTS: #{Strain.all[i].effects}" 
-                space
-            end
+        if Strain.all[i].flavors == "Sweet"
+            puts "                          NAME: #{Strain.all[i].name}"
+            space
+            puts "                          RACE: #{Strain.all[i].race}"
+            space
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            space
+        end
     end 
 
     def earthy
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].flavors == "Earthy"
+        if Strain.all[i].flavors == "Earthy"
+            puts "                          NAME: #{Strain.all[i].name}"
+            space
+            puts "                          RACE: #{Strain.all[i].race}"
+            space
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            space
+        end
+    end 
+
+    def effect_menu
+        space
+        puts "             Please choose an Effect you wish to experience below "
+        puts "                    by typing in the corresponding number"
+        puts "-------------------------------------------------------------------------------"
+        puts "| 1. HAPPY -- Maybe you've been a little down lately?                         |"
+        puts "|                                                                             |"
+        puts "| 2. CREATIVE -- We all need a little inspiration sometimes.                  |"
+        puts "|                                                                             |"
+        puts "| 3. RELAXED -- Slow Jams? Check. Bath bomb? Check. Here's the cherry ontop.  |"
+        puts "-------------------------------------------------------------------------------"
+        effect_results
+    end
+
+    def effect_results
+        user_input
+        if input.to_i == 1
+            happy 
+        elsif input.to_i == 2
+            creative
+        elsif input.to_i == 3
+            relaxed
+        end
+    end
+
+    def happy
+        @api.get_strain
+        i = rand(0..1970)
+            if Strain.all[i].effects == "happy"
                 puts "                          NAME: #{Strain.all[i].name}"
                 space
-                puts "                          RACE: #{Strain.all[i].race}"
+                puts "                          FLAVORS: #{Strain.all[i].flavors}"
                 space
                 puts "                          EFFECTS: #{Strain.all[i].effects}" 
                 space
-            end
-    end 
-
-    def by_race
-        puts "Please choose a Strain Type below by typing in the corresponding number."
-        puts race_menu
+            end  
     end
 
-    def by_flavor
-        puts "Please choose a Flavor below by typing in the corresponding number."
-        #need user input.
-        #need to validate user input
+    def creative 
+        @api.get_strain
+        i = rand(0..1970)
+            if Strain.all[i].effects == "creative"
+                puts "                          NAME: #{Strain.all[i].name}"
+                space
+                puts "                          FLAVORS: #{Strain.all[i].flavors}"
+                space
+                puts "                          EFFECTS: #{Strain.all[i].effects}" 
+                space
+            end  
+    end
 
+    def relaxed 
+        @api.get_strain
+        i = rand(0..1970)
+            if Strain.all[i].effects == "relaxed"
+                puts "                          NAME: #{Strain.all[i].name}"
+                space
+                puts "                          FLAVORS: #{Strain.all[i].flavors}"
+                space
+                puts "                          EFFECTS: #{Strain.all[i].effects}" 
+                space
+            end  
     end
 
 
     def hurry_up
         puts ""
         puts "In a rush? Press 'Y' to get a random strain. Or 'M' to see the Main Menu."
-        if user_input.upcase == 'Y'
+        user_input
+        if input.upcase == 'Y'
            @api.get_strain
            space
            puts one_random_strain
            space
            goodbye
+        elsif input.upcase == "M"
+            menu
+        else
+            puts "INALID INPUT."
+            puts "Please try again"
+            hurry_up
         end
     end
 
