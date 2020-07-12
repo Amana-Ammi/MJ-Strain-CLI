@@ -103,14 +103,14 @@ class CLI
     def indica
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].race == "indica"
-                puts "                          NAME: #{Strain.all[i].name}"
-                space
-                puts "                          FLAVORS: #{Strain.all[i].flavors}"
-                space
-                puts "                          EFFECTS: #{Strain.all[i].effects}" 
-                space
-            end        
+        if Strain.all[i].race == "indica"
+            puts "                          NAME: #{Strain.all[i].name}"
+            space
+            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            space
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            space
+        end        
     end
 
     def sativa
@@ -161,7 +161,7 @@ class CLI
     def sweet
         @api.get_strain
         i = rand(0..1970)
-        if Strain.all[i].flavors == "Sweet"
+        if Strain.all[i].flavors == "sweet"
             puts "                          NAME: #{Strain.all[i].name}"
             space
             puts "                          RACE: #{Strain.all[i].race}"
