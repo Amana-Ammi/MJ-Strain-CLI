@@ -1,11 +1,12 @@
 class Strain 
     
-    attr_accessor :name, :effects, :flavors
+    attr_accessor :name, :effects, :flavors, :race
 
     @@all = []
 
-    def initialize(name, flavors, effects)
+    def initialize(name, race, flavors, effects)
         @name = name
+        @race = race
         @flavors = flavors
         @effects = effects
         @@all << self
