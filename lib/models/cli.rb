@@ -15,7 +15,7 @@ class CLI
         menu
         
         
-        # Some kind of menu w/options for search by flavor, effects, or strain
+        
         # Commands for user to continue in program and also exit when done
         # A thank you/goodbye message. Please be responsible
     end
@@ -45,16 +45,19 @@ class CLI
     def one_random_strain
         @api.get_strain
         i = rand(0..1970)
-        puts "NAME: #{Strain.all[i].name}"
+        puts "                          NAME: #{Strain.all[i].name}"
         puts ""
-        puts "RACE: #{Strain.all[i].race}"
+        puts "                          RACE: #{Strain.all[i].race}"
         puts ""
-        puts "FLAVORS: #{Strain.all[i].flavors}"
+        puts "                          FLAVORS: #{Strain.all[i].flavors}"
         puts ""
-        puts "EFFECTS: #{Strain.all[i].effects}"
+        puts "                          EFFECTS: #{Strain.all[i].effects}"
     end
 
     def menu
+        puts ""
+        puts "                                  MAIN MENU"
+        puts "                    Please type '1-3' to make a selection. "
         puts "-------------------------------------------------------------------------------"
         puts "| 1. RACE -- You've done this before, huh?                                    |"
         puts "|                                                                             |"
@@ -73,23 +76,70 @@ class CLI
         puts "|                                                                             |"
         puts "| 3. HYBRID -- Feeling neutral? Pick me!                                      |"
         puts "-------------------------------------------------------------------------------"
+        race_results
+    end
+
+    def race_results
+        if user_input.to_i == 1
+            puts indica
+        elsif user_input.to_i == 2
+            puts sativa
+        elsif user_input.to_i == 3
+            puts hybrid
+        end
+    end
+
+    def indica
+        @api.get_strain
+        i = rand(0..1970)
+        if Strain.all[i].race == "indica"
+        puts "                          NAME: #{Strain.all[i].name}"
+        puts ""
+        puts "                          FLAVORS: #{Strain.all[i].flavors}"
+        puts ""
+        puts "                          EFFECTS: #{Strain.all[i].effects}" 
+        end
+    end
+
+    def sativa
+        @api.get_strain
+        i = rand(0..1970)
+        if Strain.all[i].race == "sativa"
+        puts "                          NAME: #{Strain.all[i].name}"
+        puts ""
+        puts "                          FLAVORS: #{Strain.all[i].flavors}"
+        puts ""
+        puts "                          EFFECTS: #{Strain.all[i].effects}" 
+        end
+    end
+
+    def hybrid
+        @api.get_strain
+        i = rand(0..1970)
+        if Strain.all[i].race == "hybrid"
+        puts "                          NAME: #{Strain.all[i].name}"
+        puts ""
+        puts "                          FLAVORS: #{Strain.all[i].flavors}"
+        puts ""
+        puts "                          EFFECTS: #{Strain.all[i].effects}" 
+        end
     end
 
     def flavor_menu
         puts "-------------------------------------------------------------------------------"
-        puts "| 1. SWWEET --      |"
+        puts "| 1. SWEET --      |"
         puts "|                                                                             |"
         puts "| 2. EARTHY --  |"
         puts "|                                                                             |"
-        puts "| 3. HYBRID --                                     |"
+        puts "| 3. MINTY --                                     |"
         puts "-------------------------------------------------------------------------------"
     end
 
-    def pos_effect_menu
-    end
+    # def pos_effect_menu
+    # end
 
-    def effect_med_menu
-    end
+    # def effect_med_menu
+    # end
     
     def options
         if user_input.to_i == 1
@@ -116,7 +166,7 @@ class CLI
 
     def hurry_up
         puts ""
-        puts "In a rush? Press 'Y' to get a random strain. Or 'N' to continue."
+        puts "In a rush? Press 'Y' to get a random strain. Or 'M' to see the Main Menu."
         if user_input == 'Y'
            @api.get_strain
            puts ""
