@@ -6,5 +6,6 @@ Bundler.require
 
 require_relative '../config/environment.rb'
 
-StrainApi.new.get_strain
+# StrainApi.new.get_strain
 CLI.new.start
+
