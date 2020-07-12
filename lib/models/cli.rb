@@ -13,9 +13,6 @@ class CLI
         welcome
         hurry_up 
         options
-        
-        # Commands for user to continue in program and also exit when done
-        # A thank you/goodbye message. Please be responsible
     end
 
     def user_input
@@ -87,6 +84,17 @@ class CLI
         race_results
     end
 
+    def race_results
+        user_input
+        if input.to_i == 1
+            indica
+        elsif input.to_i == 2
+            sativa
+        elsif input.to_i == 3
+            hybrid
+        end
+    end
+
     def indica
         @api.get_strain
         i = rand(0..1970)
@@ -99,7 +107,8 @@ class CLI
             space
             puts "                          EFFECTS: #{Strain.all[i].effects}" 
             space  
-        end    
+        end   
+        continue 
     end
 
     def sativa
@@ -115,18 +124,20 @@ class CLI
             puts "                          EFFECTS: #{Strain.all[i].effects}" 
             space
         end
+        continue
     end
 
     def hybrid
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].race = "hybrid"
-                puts "                          NAME: #{Strain.all[i].name}"
-                space
-                puts "                          FLAVORS: #{Strain.all[i].flavors}"
-                space
-                puts "                          EFFECTS: #{Strain.all[i].effects}" 
-            end
+        if Strain.all[i].race = "hybrid"
+            puts "                          NAME: #{Strain.all[i].name}"
+            space
+            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            space
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+        end
+        continue
     end
 
     def flavor_menu
@@ -160,6 +171,7 @@ class CLI
             puts "                          EFFECTS: #{Strain.all[i].effects}" 
             space
         end
+        continue
     end 
 
     def earthy
@@ -173,6 +185,7 @@ class CLI
             puts "                          EFFECTS: #{Strain.all[i].effects}" 
             space
         end
+        continue
     end 
 
     def effect_menu
@@ -211,32 +224,35 @@ class CLI
                 puts "                          EFFECTS: #{Strain.all[i].effects}" 
                 space
             end  
+        continue
     end
 
     def creative 
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].effects = "creative"
-                puts "                          NAME: #{Strain.all[i].name}"
-                space
-                puts "                          FLAVORS: #{Strain.all[i].flavors}"
-                space
-                puts "                          EFFECTS: #{Strain.all[i].effects}" 
-                space
-            end  
+        if Strain.all[i].effects = "creative"
+            puts "                          NAME: #{Strain.all[i].name}"
+            space
+            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            space
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            space
+        end  
+        continue
     end
 
     def relaxed 
         @api.get_strain
         i = rand(0..1970)
-            if Strain.all[i].effects == "relaxed"
-                puts "                          NAME: #{Strain.all[i].name}"
-                space
-                puts "                          FLAVORS: #{Strain.all[i].flavors}"
-                space
-                puts "                          EFFECTS: #{Strain.all[i].effects}" 
-                space
-            end  
+        if Strain.all[i].effects == "relaxed"
+            puts "                          NAME: #{Strain.all[i].name}"
+            space
+            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            space
+            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            space
+        end
+        continue  
     end
 
 
@@ -249,7 +265,7 @@ class CLI
            space
            puts one_random_strain
            space
-           goodbye
+           continue
         elsif input.upcase == "M"
             menu
         else
@@ -259,14 +275,14 @@ class CLI
         end
     end
 
-    def race_results
+    def continue
+        puts "                                Enjoying the program?"
+        puts "             Press 'Y' to return to the MAIN MENU. Or 'N' to exit the program."
         user_input
-        if input.to_i == 1
-            indica
-        elsif input.to_i == 2
-            sativa
-        elsif input.to_i == 3
-            hybrid
+        if input.upcase == "Y"
+            menu
+        else
+            goodbye
         end
     end
 
