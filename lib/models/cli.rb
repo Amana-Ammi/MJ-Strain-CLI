@@ -12,7 +12,6 @@ class CLI
         age_verification
         welcome
         hurry_up 
-        options
     end
 
     def user_input
@@ -24,8 +23,9 @@ class CLI
         puts "Before we get started, please enter your age below."
         user_input
         if input.to_i > 121 || input.to_i < 21
-            puts "Either your input is inavlid or you're too young to participate. 
-                Please try again or come back when you're of legal age! :)"
+            space
+            puts "     Either your input is inavlid or you're too young to participate. 
+                          Please try again or come back when you're of legal age! :)"
             space
             exit
         else 
@@ -57,7 +57,7 @@ class CLI
         puts "|                                                                             |"
         puts "| 3. EFFECTS -- Searching for a feeling?                                      |"
         puts "-------------------------------------------------------------------------------"
-    
+        options
     end
 
     def options
@@ -244,7 +244,7 @@ class CLI
     def relaxed 
         @api.get_strain
         i = rand(0..1970)
-        if Strain.all[i].effects == "relaxed"
+        if Strain.all[i].effects = "relaxed"
             puts "                          NAME: #{Strain.all[i].name}"
             space
             puts "                          FLAVORS: #{Strain.all[i].flavors}"
@@ -277,12 +277,16 @@ class CLI
 
     def continue
         puts "                                Enjoying the program?"
-        puts "             Press 'Y' to return to the MAIN MENU. Or 'N' to exit the program."
+        puts "             Press 'M' to return to the MAIN MENU. Or 'X' to exit the program."
         user_input
-        if input.upcase == "Y"
+        if input.upcase == "M"
             menu
-        else
+        elsif input.upcase == "X"
             goodbye
+        else
+            puts "INALID INPUT."
+            puts "Please try again"
+            continue
         end
     end
 
