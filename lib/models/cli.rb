@@ -24,8 +24,8 @@ class CLI
         user_input
         if input.to_i > 121 || input.to_i < 21
             space
-            puts "     Either your input is inavlid or you're too young to participate. 
-                          Please try again or come back when you're of legal age! :)"
+            puts "              Either your input is inavlid or you're too young to participate." 
+            puts "                Please try again or come back when you're of legal age! :)"
             space
             exit
         else 
@@ -68,6 +68,11 @@ class CLI
             flavor_menu
         elsif input.to_i == 3
             effect_menu
+        else
+            space
+            puts "INALID INPUT."
+            puts "Please try again"
+            menu
         end
     end
 
@@ -92,6 +97,12 @@ class CLI
             sativa
         elsif input.to_i == 3
             hybrid
+        else
+            space
+            puts "INALID INPUT."
+            puts "Please try again"
+            space
+            race_menu
         end
     end
 
@@ -157,6 +168,12 @@ class CLI
             sweet
         elsif input.to_i == 2
             earthy
+        else
+            space
+            puts "INALID INPUT."
+            puts "Please try again"
+            space
+            flavor_menu
         end
     end
 
@@ -210,6 +227,12 @@ class CLI
             creative
         elsif input.to_i == 3
             relaxed
+        else
+            space
+            puts "INALID INPUT."
+            puts "Please try again"
+            space
+            effect_menu
         end
     end
 
@@ -269,6 +292,7 @@ class CLI
         elsif input.upcase == "M"
             menu
         else
+            space
             puts "INALID INPUT."
             puts "Please try again"
             hurry_up
