@@ -18,28 +18,48 @@ class CLI
         @input = gets.chomp
     end 
 
+    # def age_verification
+    #     puts ""
+    #     puts "Before we get started, please enter your age below."
+    #     user_input
+    #     if input.to_i > 121 || input.to_i < 21
+    #         space
+    #         puts "              Either your input is invalid or you're too young to participate." 
+    #         puts "                Please try again or come back when you're of legal age! :)"
+    #         space
+    #         exit
+    #     else 
+    #         puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
+    #         space
+    #     end
+    # end
+
     def age_verification
         puts ""
         puts "Before we get started, please enter your age below."
         user_input
-        if input.to_i > 121 || input.to_i < 21
-            space
-            puts "              Either your input is inavlid or you're too young to participate." 
-            puts "                Please try again or come back when you're of legal age! :)"
-            space
-            exit
-        else 
+        if input.to_i >= 21
             puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
-            space
+            puts ""
+        elsif input.to_i < 21
+            puts "
+            Either your input is invalid or you're too young to participate. 
+            Please try again or come back when you're of legal age! :)"
+            puts ""
+            exit
+        else
+            puts "INVALID INPUT!! Please try again."
+            age_verification
         end
     end
+
 
     def one_random_strain
         @api.get_strain
         i = rand(0..1970)
         puts "                          NAME: #{Strain.all[i].name}"
         space
-        puts "                          RACE: #{Strain.all[i].race}"
+        puts "                          TYPE: #{Strain.all[i].race}"
         space
         puts "                          FLAVORS: #{Strain.all[i].flavors}"
         space

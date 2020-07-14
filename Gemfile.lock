@@ -3,6 +3,7 @@ GEM
   specs:
     awesome_print (1.8.0)
     coderay (1.1.3)
+    colorize (0.8.1)
     dotenv (2.7.5)
     httparty (0.18.1)
       mime-types (~> 3.0)
@@ -15,15 +16,18 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    rainbow (3.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   awesome_print
+  colorize
   dotenv
   httparty
   pry
+  rainbow
 
 BUNDLED WITH
    2.1.4
