@@ -18,38 +18,20 @@ class CLI
         @input = gets.chomp
     end 
 
-    # def age_verification
-    #     puts ""
-    #     puts "Before we get started, please enter your age below."
-    #     user_input
-    #     if input.to_i > 121 || input.to_i < 21
-    #         space
-    #         puts "              Either your input is invalid or you're too young to participate." 
-    #         puts "                Please try again or come back when you're of legal age! :)"
-    #         space
-    #         exit
-    #     else 
-    #         puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
-    #         space
-    #     end
-    # end
-
     def age_verification
         puts ""
-        puts "Before we get started, please enter your age below."
+        puts Rainbow("Before we get started, please enter your age below.").orange
         user_input
-        if input.to_i >= 21
-            puts "          ~~~ Congratulations! You were born just in time to use this application!! ~~~"
-            puts ""
-        elsif input.to_i < 21
-            puts "
-            Either your input is invalid or you're too young to participate. 
-            Please try again or come back when you're of legal age! :)"
-            puts ""
+        if input.to_i > 121 || input.to_i < 21
+            space
+            puts "              Either your input is invalid or you're too young to participate." 
+            puts "                Please try again or come back when you're of legal age! :)"
+            space
             exit
-        else
-            puts "INVALID INPUT!! Please try again."
-            age_verification
+        else 
+            space
+            puts Rainbow("           ~~~ Congratulations! You were born just in time to use this application!! ~~~").greenyellow
+            space
         end
     end
 
@@ -57,26 +39,26 @@ class CLI
     def one_random_strain
         @api.get_strain
         i = rand(0..1970)
-        puts "                          NAME: #{Strain.all[i].name}"
+        puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
         space
-        puts "                          TYPE: #{Strain.all[i].race}"
+        puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
         space
-        puts "                          FLAVORS: #{Strain.all[i].flavors}"
+        puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
         space
-        puts "                          EFFECTS: #{Strain.all[i].effects}"
+        puts "                          #{Rainbow("REFFECTS:").rebeccapurple} #{Strain.all[i].effects}"
     end
 
     def menu
         space
-        puts "                                  MAIN MENU"
-        puts "                    Please type '1-3' to make a selection. "
-        puts "-------------------------------------------------------------------------------"
-        puts "| 1. TYPE -- You've done this before, huh?                                    |"
+        puts Rainbow("                                  MAIN MENU").green
+        puts Rainbow("                    Please type '1-3' to make a selection. ").green
+        puts Rainbow("-------------------------------------------------------------------------------").green
+        puts "| 1. #{Rainbow("TYPE").rebeccapurple} -- You've done this before, huh?                                    |"
         puts "|                                                                             |"
-        puts "| 2. FLAVOR -- Got a taste for something specific?                            |"
+        puts "| 2. #{Rainbow("FLAVOR").rebeccapurple} -- Got a taste for something specific?                            |"
         puts "|                                                                             |"
-        puts "| 3. EFFECTS -- Searching for a feeling?                                      |"
-        puts "-------------------------------------------------------------------------------"
+        puts "| 3. #{Rainbow("EFFECTS").rebeccapurple} -- Searching for a feeling?                                      |"
+        puts Rainbow("-------------------------------------------------------------------------------").green
         options
     end
 
@@ -98,14 +80,14 @@ class CLI
 
     def race_menu
         space
-        puts "   Please choose a Strain Type below by typing in the corresponding number."
-        puts "-------------------------------------------------------------------------------"
-        puts "| 1. INDICA -- Been going and going? I can help you slow down and relax.      |"
+        puts Rainbow("   Please choose a Strain Type below by typing in the corresponding number.").green
+        puts Rainbow("-------------------------------------------------------------------------------").green
+        puts "| 1. #{Rainbow("INDICA").rebeccapurple} -- Been going and going? I can help you slow down and relax.      |"
         puts "|                                                                             |"
-        puts "| 2. SATIVA -- Need a pick me up? Maybe a boost in productivity? I'm the one! |"
+        puts "| 2. #{Rainbow("SATIVA").rebeccapurple} -- Need a pick me up? Maybe a boost in productivity? I'm the one! |"
         puts "|                                                                             |"
-        puts "| 3. HYBRID -- Feeling neutral? Pick me!                                      |"
-        puts "-------------------------------------------------------------------------------"
+        puts "| 3. #{Rainbow("HYBRID").rebeccapurple} -- Feeling neutral? Pick me!                                      |"
+        puts Rainbow("-------------------------------------------------------------------------------").green
         race_results
     end
 
@@ -130,13 +112,13 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
         if Strain.all[i].race = "indica"
-            puts "                          NAME: #{Strain.all[i].name}"
+            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
             space
-            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
             space
-            puts "                          RACE: #{Strain.all[i].race}"       
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"   
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
             space  
         end   
         continue 
@@ -146,13 +128,13 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
         if Strain.all[i].race = "sativa"
-            puts "                          NAME: #{Strain.all[i].name}"
+            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
             space
-            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
             space
-            puts "                          RACE: #{Strain.all[i].race}" 
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
             space
         end
         continue
@@ -162,23 +144,25 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
         if Strain.all[i].race = "hybrid"
-            puts "                          NAME: #{Strain.all[i].name}"
+            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
             space
-            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
+            space
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
         end
         continue
     end
 
     def flavor_menu
         space
-        puts "      Please choose a Flavor below by typing in the corresponding number."
-        puts "-------------------------------------------------------------------------------"
-        puts "|                                 1. SWEET                                    |"
+        puts Rainbow("      Please choose a Flavor below by typing in the corresponding number.").green
+        puts Rainbow("-------------------------------------------------------------------------------").green
+        puts "|                                 1. #{Rainbow("SWEET").rebeccapurple}                                    |"
         puts "|                                                                             |"
-        puts "|                                 2. EARTHY                                   |"
-        puts "-------------------------------------------------------------------------------"
+        puts "|                                 2. #{Rainbow("EARTHY ").rebeccapurple}                                  |"
+        puts Rainbow("-------------------------------------------------------------------------------").green
         flavor_results
     end
 
@@ -201,11 +185,11 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
         if Strain.all[i].flavors = "sweet"
-            puts "                          NAME: #{Strain.all[i].name}"
+            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
             space
-            puts "                          RACE: #{Strain.all[i].race}"
+            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
             space
         end
         continue
@@ -215,11 +199,11 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
         if Strain.all[i].flavors = "Earthy"
-            puts "                          NAME: #{Strain.all[i].name}"
+            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
             space
-            puts "                          RACE: #{Strain.all[i].race}"
+            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
             space
         end
         continue
@@ -227,15 +211,15 @@ class CLI
 
     def effect_menu
         space
-        puts "             Please choose an Effect you wish to experience below "
-        puts "                    by typing in the corresponding number"
-        puts "-------------------------------------------------------------------------------"
-        puts "| 1. HAPPY -- Maybe you've been a little down lately?                         |"
+        puts Rainbow("             Please choose an Effect you wish to experience below ").green
+        puts Rainbow("                    by typing in the corresponding number").green
+        puts Rainbow("-------------------------------------------------------------------------------").green
+        puts "| 1. #{Rainbow("HAPPY").rebeccapurple} -- Maybe you've been a little down lately?                         |"
         puts "|                                                                             |"
-        puts "| 2. CREATIVE -- We all need a little inspiration sometimes.                  |"
+        puts "| 2. #{Rainbow("CREATIVE").rebeccapurple} -- We all need a little inspiration sometimes.                  |"
         puts "|                                                                             |"
-        puts "| 3. RELAXED -- Slow Jams? Check. Bath bomb? Check. Here's the cherry ontop.  |"
-        puts "-------------------------------------------------------------------------------"
+        puts "| 3. #{Rainbow("RELAXED").rebeccapurple} -- Slow Jams? Check. Bath bomb? Check. Here's the cherry ontop.  |"
+        puts Rainbow("-------------------------------------------------------------------------------").green
         effect_results
     end
 
@@ -260,11 +244,13 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
             if Strain.all[i].effects = "happy"
-                puts "                          NAME: #{Strain.all[i].name}"
+                puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
                 space
-                puts "                          FLAVORS: #{Strain.all[i].flavors}"
+                puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
                 space
-                puts "                          EFFECTS: #{Strain.all[i].effects}" 
+                puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
+                space
+                puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
                 space
             end  
         continue
@@ -274,11 +260,13 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
         if Strain.all[i].effects = "creative"
-            puts "                          NAME: #{Strain.all[i].name}"
+            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
             space
-            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
+            space
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
             space
         end  
         continue
@@ -288,11 +276,13 @@ class CLI
         @api.get_strain
         i = rand(0..1970)
         if Strain.all[i].effects = "relaxed"
-            puts "                          NAME: #{Strain.all[i].name}"
+            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
             space
-            puts "                          FLAVORS: #{Strain.all[i].flavors}"
+            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
             space
-            puts "                          EFFECTS: #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
+            space
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
             space
         end
         continue  
@@ -300,8 +290,8 @@ class CLI
 
 
     def hurry_up
-        puts ""
-        puts "In a rush? Press 'Y' to get a random strain. Or 'M' to see the Main Menu."
+        space
+        puts Rainbow("             In a rush? Press 'Y' to get a random strain. Or 'M' to see the Main Menu.").rebeccapurple
         user_input
         if input.upcase == 'Y'
            @api.get_strain
@@ -320,8 +310,8 @@ class CLI
     end
 
     def continue
-        puts "                                Enjoying the program?"
-        puts "             Press 'M' to return to the MAIN MENU. Or 'X' to exit the program."
+        puts Rainbow("                                Enjoying the program?").skyblue
+        puts Rainbow("             Press 'M' to return to the MAIN MENU. Or 'X' to exit the program.").cyan
         user_input
         if input.upcase == "M"
             menu
@@ -336,28 +326,28 @@ class CLI
 
     def goodbye
         space
-        puts "                                  Thank you for your visit!"
+        puts Rainbow("                               Thank you for your visit!").orange
         space
-        puts "                                ~~ Please enjoy responsibly! ~~"
+        puts Rainbow("                            ~~ Please enjoy responsibly! ~~").orange
         space
         exit
     end
 
     def welcome
-        puts "
+        puts Rainbow("
          W                                                                            W   
         WWW                                                                          WWW   
         WWW                                                                          WWW   
        WWWWW                                                                        WWWWW 
  W     WWWWW     W                                                            W     WWWWW     W 
- WWW   WWWWW   WWW    Hello!! Welcome to what could be your best day ever!    WWW   WWWWW   WWW  
+ WWW   WWWWW   WWW         Welcome to what could be your best day ever!       WWW   WWWWW   WWW  
   WWW  WWWWW  WWW                                                              WWW  WWWWW  WWW 
    WWW  WWW  WWW                                                                WWW  WWW  WWW 
     WWW WWW WWW                                                                  WWW WWW WWW  
       WWWWWWW                                                                      WWWWWWW 
     WWWW | WWWW                                                                  WWWW | WWWW 
          |                                                                            | 
-         |                                                                            | "
+         |                                                                            | ").seagreen
 
     end
 

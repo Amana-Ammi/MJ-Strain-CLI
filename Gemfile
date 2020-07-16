@@ -8,3 +8,4 @@ gem 'httparty'
 gem 'awesome_print'
 gem 'colorize'
 gem 'rainbow'
+
