@@ -16,8 +16,8 @@ class Strain
         @@all
     end
 
-    def self.print_test
+    def self.print
         all.each {|strain| puts strain} 
     end
-
+    
 end
