@@ -43,9 +43,9 @@ class CLI
         space
         puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
         space
-        puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
+        puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
         space
-        puts "                          #{Rainbow("REFFECTS:").rebeccapurple} #{Strain.all[i].effects}"
+        puts "                          #{Rainbow("REFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}"
     end
 
     def menu
@@ -116,9 +116,9 @@ class CLI
             space
             puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
             space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"   
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"   
             space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
             space  
         end   
         continue 
@@ -132,9 +132,9 @@ class CLI
             space
             puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
             space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
             space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
             space
         end
         continue
@@ -148,9 +148,9 @@ class CLI
             space
             puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
             space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
         end
         continue
     end
@@ -189,7 +189,7 @@ class CLI
             space
             puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
             space
         end
         continue
@@ -203,7 +203,7 @@ class CLI
             space
             puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
             space
         end
         continue
@@ -248,9 +248,7 @@ class CLI
                 space
                 puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
                 space
-                puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
-                space
-                puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+                puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
                 space
             end  
         continue
@@ -264,9 +262,7 @@ class CLI
             space
             puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
             space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
-            space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
             space
         end  
         continue
@@ -280,14 +276,11 @@ class CLI
             space
             puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
             space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors}"
-            space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects}" 
+            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
             space
         end
         continue  
     end
-
 
     def hurry_up
         space
