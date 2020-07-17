@@ -23,7 +23,7 @@ HOW-TO
 
     Follow the prompts by typing in your selction and then pressing the 'enter' key.
 
-    If at anytime you are ready to exit the program, type 'x' into your terminal and then 'enter'.
+    After each result is populated, you may exit the program by typing 'x' into your terminal and then 'enter'.
 
 SUPPORT
 
