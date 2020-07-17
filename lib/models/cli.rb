@@ -35,7 +35,6 @@ class CLI
         end
     end
 
-
     def one_random_strain
         @api.get_strain
         i = rand(0..1970)
