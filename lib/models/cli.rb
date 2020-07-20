@@ -36,7 +36,6 @@ class CLI
     end
 
     def one_random_strain
-        @api.get_strain
         i = rand(0..1970)
         puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
         space
@@ -77,6 +76,18 @@ class CLI
         end
     end
 
+    def display_strain(strain)
+        puts "                          #{Rainbow("NAME:").rebeccapurple} #{strain.name}"
+        space
+        puts "                          #{Rainbow("TYPE:").rebeccapurple} #{strain.race.capitalize}"
+        space
+        puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{strain.flavors.join(' - ')}"
+        space
+        puts "                         #{Rainbow("REFFECTS:").rebeccapurple} #{strain.effects.join(' - ')}"
+        space
+        continue
+    end
+
     def race_menu
         space
         puts Rainbow("   Please choose a Strain Type below by typing in the corresponding number.").green
@@ -108,50 +119,18 @@ class CLI
     end
 
     def indica
-        @api.get_strain
-        i = rand(0..1970)
-        if Strain.all[i].race = "indica"
-            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-            space
-            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
-            space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"   
-            space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
-            space  
-        end   
-        continue 
+        strain = Strain.indica_strains.sample
+        display_strain(strain) 
     end
 
     def sativa
-        @api.get_strain
-        i = rand(0..1970)
-        if Strain.all[i].race = "sativa"
-            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-            space
-            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
-            space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
-            space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
-            space
-        end
-        continue
+        strain = Strain.sativa_strains.sample
+        display_strain(strain)
     end
 
     def hybrid
-        @api.get_strain
-        i = rand(0..1970)
-        if Strain.all[i].race = "hybrid"
-            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-            space
-            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
-            space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
-            space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
-        end
-        continue
+        strain = Strain.hybrid_strains.sample
+        display_strain(strain)
     end
 
     def flavor_menu
@@ -181,31 +160,13 @@ class CLI
     end
 
     def sweet
-        @api.get_strain
-        i = rand(0..1970)
-        if Strain.all[i].flavors = "sweet"
-            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-            space
-            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
-            space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
-            space
-        end
-        continue
+        strain = Strain.sweet_strains.sample
+        display_strain(strain)
     end 
 
     def earthy
-        @api.get_strain
-        i = rand(0..1970)
-        if Strain.all[i].flavors = "Earthy"
-            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-            space
-            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
-            space
-            puts "                          #{Rainbow("EFFECTS:").rebeccapurple} #{Strain.all[i].effects.join(' - ')}" 
-            space
-        end
-        continue
+        strain = Strain.earthy_strains.sample
+        display_strain(strain)
     end 
 
     def effect_menu
@@ -240,45 +201,18 @@ class CLI
     end
 
     def happy
-        @api.get_strain
-        i = rand(0..1970)
-            if Strain.all[i].effects = "happy"
-                puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-                space
-                puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
-                space
-                puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
-                space
-            end  
-        continue
+        strain = Strain.happy_strains.sample
+        display_strain(strain)            
     end
 
     def creative 
-        @api.get_strain
-        i = rand(0..1970)
-        if Strain.all[i].effects = "creative"
-            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-            space
-            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}"
-            space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
-            space
-        end  
-        continue
+        strain = Strain.creative_strains.sample
+        display_strain(strain)
     end
 
     def relaxed 
-        @api.get_strain
-        i = rand(0..1970)
-        if Strain.all[i].effects = "relaxed"
-            puts "                          #{Rainbow("NAME:").rebeccapurple} #{Strain.all[i].name}"
-            space
-            puts "                          #{Rainbow("TYPE:").rebeccapurple} #{Strain.all[i].race.capitalize}" 
-            space
-            puts "                          #{Rainbow("FLAVORS:").rebeccapurple} #{Strain.all[i].flavors.join(' - ')}"
-            space
-        end
-        continue  
+       strain = Strain.relaxed_strains.sample
+       display_strain(strain) 
     end
 
     def hurry_up
@@ -286,8 +220,7 @@ class CLI
         puts Rainbow("             In a rush? Press 'Y' to get a random strain. Or 'M' to see the Main Menu.").rebeccapurple
         user_input
         if input.upcase == 'Y'
-           @api.get_strain
-           space
+              space
            puts one_random_strain
            space
            continue
@@ -348,6 +281,3 @@ class CLI
     end
 
 end
-
-
-
